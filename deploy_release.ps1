@@ -39,8 +39,8 @@ $version = Read-Host -Prompt "Enter the version number"
 
 # Run Maven install command
 mvn install:install-file `
-    "-DgroupId=com.badskater0729.yamltranslator" `
-    "-DartifactId=YAMLTranslator" `
+    "-DgroupId=fr.minuskube.inv" `
+    "-DartifactId=folia-smart-invs" `
     "-Dversion=$version" `
     "-Dfile=$jar_path" `
     "-Dpackaging=jar" `
@@ -55,9 +55,9 @@ if ($LASTEXITCODE -ne 0) {
 
 # Generate SHA1 and MD5 checksums
 Write-Host "Generating checksums..."
-Set-Location -Path "com\badskater0729\yamltranslator\YAMLTranslator\$version"
+Set-Location -Path "fr\minuskube\inv\folia-smart-invs\$version"
 
-$files = @("YAMLTranslator-$version.jar", "YAMLTranslator-$version.pom")
+$files = @("folia-smart-invs-$version.jar", "folia-smart-invs-$version.pom")
 foreach ($file in $files) {
     certutil -hashfile $file SHA1 | Select-Object -Last 1 | Out-File -FilePath "$file.sha1"
     certutil -hashfile $file MD5 | Select-Object -Last 1 | Out-File -FilePath "$file.md5"

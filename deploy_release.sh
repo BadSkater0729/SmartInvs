@@ -82,7 +82,7 @@ read -p "Enter the version number: " version
 # Run Maven install command
 mvn install:install-file \
     -DgroupId=fr.minuskube.inv \
-    -DartifactId=smart-invs \
+    -DartifactId=folia-smart-invs \
     -Dversion="$version" \
     -Dfile="$jar_path" \
     -Dpackaging=jar \
@@ -97,9 +97,9 @@ fi
 
 # Generate SHA1 and MD5 checksums
 echo "Generating checksums..."
-cd fr/minuskube/inv/smart-invs/"$version"
+cd fr/minuskube/inv/folia-smart-invs/"$version"
 
-for file in smart-invs-"$version".{jar,pom}; do
+for file in folia-smart-invs-"$version".{jar,pom}; do
     if [ "$OS" == "macOS" ]; then
         shasum -a 1 "$file" > "$file.sha1"
         md5 "$file" > "$file.md5"
