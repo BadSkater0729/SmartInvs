@@ -76,6 +76,7 @@ public class SmartInventory {
                     .forEach(listener -> ((InventoryListener<InventoryCloseEvent>) listener)
                             .accept(new InventoryCloseEvent(player.getOpenInventory())));
 
+            this.manager.cancelUpdateTask(player);
             this.manager.setInventory(player, null);
         });
 
