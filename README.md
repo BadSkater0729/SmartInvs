@@ -6,7 +6,10 @@
 # SmartInvs
 Advanced Inventory API for your Minecraft Bukkit plugins.
 
-*Tested Minecraft versions: 1.7, 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14*  
+*Tested Minecraft (Bukkit derivatives) versions: 1.7, 1.8, 1.9, 1.10, 1.11, 1.12, 1.13, 1.14, 1.15, 1.16, 1.17, 1.18, 1.19, 1.20, 1.21
+
+**Tested Folia versions: 1.20
+
 **You can use this as a Plugin, or use it as a library** (see [the docs](https://minuskube.gitbooks.io/smartinvs/))
 
 ## Features
@@ -36,10 +39,14 @@ You can also use a build system:
 ```gradle
 repositories {
     mavenCentral()
+    
+    maven {
+        url "https://raw.github.com/BadSkater0729/SmartInvs/bukkit-maven-repo"
+    }
 }
 
 dependencies {
-    compile 'fr.minuskube.inv:smart-invs:1.3.0'
+    compile 'fr.minuskube.inv:bukkit-smart-invs:1.3.5'
 }
 ```
 
@@ -47,10 +54,12 @@ dependencies {
 ```xml
 <dependency>
   <groupId>fr.minuskube.inv</groupId>
-  <artifactId>smart-invs</artifactId>
-  <version>1.3.0</version>
+  <artifactId>bukkit-smart-invs</artifactId>
+  <version>1.3.5</version>
 </dependency>
 ```
+
+_NOTE: If you are on folia, just change all mentions of "bukkit" above to folia instead._
 
 ## TODO
 * Add some Javadocs

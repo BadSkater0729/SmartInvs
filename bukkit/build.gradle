@@ -1,0 +1,19 @@
+sourceCompatibility = 8
+
+dependencies {
+    implementation project(':core')
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.19.0'
+    testImplementation 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+}
+
+jar {
+    archiveFileName = 'SmartInvs-Bukkit-' + project.version + '.jar'
+    from { project(':core').sourceSets.main.output }
+}
+
+signing {
+    required = false
+}

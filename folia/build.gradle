@@ -1,0 +1,37 @@
+sourceCompatibility = 21
+
+dependencies {
+    implementation project(':core')
+    compileOnly 'dev.folia:folia-api:1.20.6-R0.1-SNAPSHOT'
+
+    testImplementation 'dev.folia:folia-api:1.20.6-R0.1-SNAPSHOT'
+}
+
+signing {
+    required = false
+}
+
+// Modify plugin.yml, set folia-supported: true
+task modifyPluginYml(type: Copy) {
+    from("${project(':core').projectDir}/src/main/resources") {
+        include 'plugin.yml'
+        filter { line -> line.replaceAll('folia-supported: false', 'folia-supported: true') }
+    }
+    into "${buildDir}/resources/main"
+}
+
+jar {
+    archiveFileName = 'SmartInvs-Folia-' + project.version + '.jar'
+    from(sourceSets.main.output)
+    from(project(':core').sourceSets.main.output) {
+        exclude 'plugin.yml'  // Exclude the original plugin.yml
+    }
+    from("${buildDir}/resources/main") {
+        include 'plugin.yml'  // Include our modified plugin.yml
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+jar.dependsOn modifyPluginYml
+
+processResources.dependsOn modifyPluginYml
