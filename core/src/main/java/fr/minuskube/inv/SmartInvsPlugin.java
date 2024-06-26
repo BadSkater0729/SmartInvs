@@ -39,8 +39,8 @@ public class SmartInvsPlugin extends JavaPlugin {
     public static JavaPlugin instance() { return instance; }
 
     public static void setPlugin(JavaPlugin javaPlugin) {
-        debugEnabled = System.getProperty("SMART_INVS_DEBUG").equalsIgnoreCase("true");
         instance = javaPlugin;
+        debugEnabled = System.getProperty("SMART_INVS_DEBUG").equalsIgnoreCase("true");
         invManager = new InventoryManager(javaPlugin);
         invManager.init();
     }
