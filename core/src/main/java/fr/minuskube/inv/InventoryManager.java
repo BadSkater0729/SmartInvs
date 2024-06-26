@@ -36,6 +36,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 
+import static fr.minuskube.inv.SmartInvsPlugin.debugMsg;
+
 public class InventoryManager {
 
     private final JavaPlugin plugin;
@@ -53,11 +55,15 @@ public class InventoryManager {
         try {
             // Check for Folia
             Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+            debugMsg("Trying to use Folia Scheduler Manager!");
+
             return (SchedulerManager) Class.forName("fr.minuskube.inv.FoliaSchedulerManager")
                     .getConstructor(JavaPlugin.class)
                     .newInstance(plugin);
         } catch (ClassNotFoundException e) {
             // If this does not exist, assume Paper/Spigot/Bukkit
+            debugMsg("Folia not found or unable to load. Using Bukkit/Paper/Spigot invManager...");
+
             try {
                 return (SchedulerManager) Class.forName("fr.minuskube.inv.BukkitSchedulerManager")
                         .getConstructor(JavaPlugin.class)
