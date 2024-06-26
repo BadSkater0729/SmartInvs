@@ -49,9 +49,4 @@ public class SmartInvsPlugin extends JavaPlugin {
         instance = null;
         invManager = null;
     }
-
-    public static void debugMsg(String msg) {
-        // if (debugEnabled)
-        if (true) { instance.getServer().getLogger().warning("SmartInvs Debug: " + msg); }
-    }
 }

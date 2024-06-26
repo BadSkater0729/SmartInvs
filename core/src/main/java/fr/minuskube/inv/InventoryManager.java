@@ -36,7 +36,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 
-import static fr.minuskube.inv.SmartInvsPlugin.debugMsg;
+import static fr.minuskube.inv.util.Misc.debugMsg;
 
 public class InventoryManager {
 

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-import static fr.minuskube.inv.SmartInvsPlugin.debugMsg;
+import static fr.minuskube.inv.util.Misc.debugMsg;
 
 public class FoliaSchedulerManager implements SchedulerManager {
     private final JavaPlugin plugin;
