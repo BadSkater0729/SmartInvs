@@ -23,8 +23,6 @@ public class SmartInvsPlugin extends JavaPlugin {
     private static JavaPlugin instance;
     private static InventoryManager invManager;
 
-    private static boolean debugEnabled;
-
     @Override
     public void onEnable() {
         setPlugin(this);
@@ -40,7 +38,6 @@ public class SmartInvsPlugin extends JavaPlugin {
 
     public static void setPlugin(JavaPlugin javaPlugin) {
         instance = javaPlugin;
-        debugEnabled = System.getProperty("SMART_INVS_DEBUG").equalsIgnoreCase("true");
         invManager = new InventoryManager(javaPlugin);
         invManager.init();
     }

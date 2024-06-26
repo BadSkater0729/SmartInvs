@@ -55,14 +55,14 @@ public class InventoryManager {
         try {
             // Check for Folia
             Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
-            debugMsg("Trying to use Folia Scheduler Manager!");
+            debugMsg("Trying to use Folia Scheduler Manager!", plugin);
 
             return (SchedulerManager) Class.forName("fr.minuskube.inv.FoliaSchedulerManager")
                     .getConstructor(JavaPlugin.class)
                     .newInstance(plugin);
         } catch (ClassNotFoundException e) {
             // If this does not exist, assume Paper/Spigot/Bukkit
-            debugMsg("Folia not found or unable to load. Using Bukkit/Paper/Spigot invManager...");
+            debugMsg("Folia not found or unable to load. Using Bukkit/Paper/Spigot invManager...", plugin);
 
             try {
                 return (SchedulerManager) Class.forName("fr.minuskube.inv.BukkitSchedulerManager")

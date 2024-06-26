@@ -22,24 +22,24 @@ public class BukkitSchedulerManager implements SchedulerManager {
     @Override
     public void runTask(BukkitRunnable task, Player player, long delay, long period, SchedulerType type) {
         BukkitTask scheduledTask;
-        debugMsg("Using BukkitSchedulerManager to run a task! Type: " + type.name() + " | Delay: " + delay + " | Period: " + period);
+        debugMsg("Using BukkitSchedulerManager to run a task! Type: " + type.name() + " | Delay: " + delay + " | Period: " + period, plugin);
 
         if (delay == 0 && period == 0) {
-            debugMsg("runTask()");
+            debugMsg("runTask()", plugin);
             scheduledTask = task.runTask(plugin);
         } else if (delay != 0 && period == 0) {
-            debugMsg("runTaskLater() <-- delay");
+            debugMsg("runTaskLater() <-- delay", plugin);
             scheduledTask = task.runTaskLater(plugin, delay);
         } else {
-            debugMsg("runTaskTimer() <-- delay & repeat");
+            debugMsg("runTaskTimer() <-- delay & repeat", plugin);
             scheduledTask = task.runTaskTimer(plugin, delay, period);
         }
 
         if (scheduledTask != null) {
-            debugMsg("Added scheduledTask to list. List size: " + tasks.size());
+            debugMsg("Added scheduledTask to list. List size: " + tasks.size(), plugin);
             tasks.put(player, scheduledTask);
         } else {
-            debugMsg("scheduledTask was null? Not adding to list! List size: " + tasks.size());
+            debugMsg("scheduledTask was null? Not adding to list! List size: " + tasks.size(), plugin);
         }
     }
 
@@ -47,10 +47,10 @@ public class BukkitSchedulerManager implements SchedulerManager {
     public void cancelTaskByPlayer(Player player) {
         BukkitTask task = tasks.remove(player);
         if (task != null) {
-            debugMsg("Task cancelled :) List size: " + tasks.size());
+            debugMsg("Task cancelled :) List size: " + tasks.size(), plugin);
             task.cancel();
         } else {
-            debugMsg("Unable to cancel task, list remove() returned null. List size: " + tasks.size());
+            debugMsg("Unable to cancel task, list remove() returned null. List size: " + tasks.size(), plugin);
         }
     }
 }

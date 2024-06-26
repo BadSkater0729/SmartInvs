@@ -21,29 +21,29 @@ public class FoliaSchedulerManager implements SchedulerManager {
     @Override
     public void runTask(BukkitRunnable task, Player player, long delay, long period, SchedulerType type) {
         // Convert BukkitRunnable to Folia task
-        debugMsg("Using FoliaSchedulerManager, converting bukkitrun to task...");
+        debugMsg("Using FoliaSchedulerManager, converting bukkitrun to task...", plugin);
         Consumer<ScheduledTask> consumerTask = (scheduledTask) -> task.run();
 
         // Begin type check
         switch (type) {
             case ENTITY:
-                debugMsg("Entity scheduler requested");
+                debugMsg("Entity scheduler requested", plugin);
                 ScheduledTask scheduledTask;
                 if (delay == 0 && period == 0) {
-                    debugMsg("run()");
+                    debugMsg("run()", plugin);
                     scheduledTask = player.getScheduler().run(plugin, consumerTask, null);
                 } else if (delay != 0 && period == 0) {
-                    debugMsg("runDelayed() <-- delay");
+                    debugMsg("runDelayed() <-- delay", plugin);
                     scheduledTask = player.getScheduler().runDelayed(plugin, consumerTask, null, delay);
                 } else {
-                    debugMsg("runAtFixedRate() <-- delay + repeat");
+                    debugMsg("runAtFixedRate() <-- delay + repeat", plugin);
                     scheduledTask = player.getScheduler().runAtFixedRate(plugin, consumerTask, null, delay, period);
                 }
                 if (scheduledTask != null) {
-                    debugMsg("Added scheduledTask to list. List size: " + tasks.size());
+                    debugMsg("Added scheduledTask to list. List size: " + tasks.size(), plugin);
                     tasks.put(player, scheduledTask);
                 } else {
-                    debugMsg("scheduledTask was null? Not adding to list! List size: " + tasks.size());
+                    debugMsg("scheduledTask was null? Not adding to list! List size: " + tasks.size(), plugin);
                 }
                 break;
             case GLOBAL:
@@ -59,10 +59,10 @@ public class FoliaSchedulerManager implements SchedulerManager {
     public void cancelTaskByPlayer(Player player) {
         ScheduledTask task = tasks.remove(player);
         if (task != null) {
-            debugMsg("Task cancelled :) List size: " + tasks.size());
+            debugMsg("Task cancelled :) List size: " + tasks.size(), plugin);
             task.cancel();
         } else {
-            debugMsg("Unable to cancel task, list remove() returned null. List size: " + tasks.size());
+            debugMsg("Unable to cancel task, list remove() returned null. List size: " + tasks.size(), plugin);
         }
     }
 }
