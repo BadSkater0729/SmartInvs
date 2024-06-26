@@ -3,14 +3,15 @@
   <groupId>fr.minuskube.inv</groupId>
   <artifactId>folia-smart-invs</artifactId>
   <versioning>
-    <release>1.3.5-b5</release>
+    <release>1.3.5-b6</release>
     <versions>
       <version>1.3.5-b1</version>
       <version>1.3.5-b2</version>
       <version>1.3.5-b3</version>
       <version>1.3.5-b4</version>
       <version>1.3.5-b5</version>
+      <version>1.3.5-b6</version>
     </versions>
-    <lastUpdated>20240626023500</lastUpdated>
+    <lastUpdated>20240626024737</lastUpdated>
   </versioning>
 </metadata>
