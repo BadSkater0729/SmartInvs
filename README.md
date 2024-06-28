@@ -41,7 +41,7 @@ repositories {
     mavenCentral()
     
     maven {
-        url "https://raw.github.com/BadSkater0729/SmartInvs/bukkit-maven-repo"
+        url "https://raw.github.com/dominicfeliton/SmartInvs/bukkit-maven-repo"
     }
 }
 
